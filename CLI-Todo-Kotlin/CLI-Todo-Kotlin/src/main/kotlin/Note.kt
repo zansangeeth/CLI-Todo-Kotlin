@@ -1,5 +1,4 @@
 package com.sangeeth
 
-class Note {
-    var note : String = ""
-}
+private class Note(override val getNote: String) : NoteInterface
+fun createNote(noteText: String): NoteInterface = Note(noteText)
