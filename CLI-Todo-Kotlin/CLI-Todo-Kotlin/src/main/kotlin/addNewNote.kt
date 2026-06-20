@@ -1,5 +1,8 @@
 package com.sangeeth
 
+import java.time.LocalDate
+import java.util.UUID
+
 val notesDBInstance = NotesDB()
 
 
@@ -7,9 +10,14 @@ val notesDBInstance = NotesDB()
 fun addNewNote() {
     print("please enter new note : ")
     scanner = readln()
-    val newNote = createNote(scanner.toString())
-    notesDBInstance.notesDB.add(newNote.getNote)
-    println("you entered : ${scanner.toString()}")
+    val noteId = UUID.randomUUID().toString()
+    val newNote = createNote(
+        noteText = scanner.toString(),
+        getTime = LocalDate.now().toString(),
+    )
+    notesDBInstance.notesDB.getOrPut(noteId) { mutableListOf() }.add(newNote)
+
+    println("you entered : ${newNote.getNote + newNote.getTime}")
     println("here is the new note from class ${newNote.getNote}")
     cliInit()
 

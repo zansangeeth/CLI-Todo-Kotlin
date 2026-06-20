@@ -1,5 +1,7 @@
 package com.sangeeth
 
+import java.io.StringReader
+
 class NotesDB {
-    val notesDB = mutableListOf<String>()
+    val notesDB: MutableMap<String, MutableList<NoteInterface>> = mutableMapOf()
 }
