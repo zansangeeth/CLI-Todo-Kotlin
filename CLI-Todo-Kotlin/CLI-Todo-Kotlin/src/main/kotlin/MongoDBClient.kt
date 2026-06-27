@@ -3,7 +3,6 @@ package com.sangeeth
 import com.mongodb.kotlin.client.coroutine.MongoClient
 import kotlinx.coroutines.flow.first
 import org.bson.Document
-import java.util.Objects
 
 suspend fun mongoDBClient(data: NoteInterface) {
 
@@ -12,7 +11,7 @@ suspend fun mongoDBClient(data: NoteInterface) {
     val mongoDBClient = MongoClient.create(connectionUri)
     var database = mongoDBClient.getDatabase("koltin-notes-cli-app")
     val notesCollections = database.getCollection<Document>(collectionName = "notes")
-    notesCollections.find().first()
+//    notesCollections.find().first()
 
     val document = Document()
         .append("id", data.getNoteId)
@@ -21,6 +20,5 @@ suspend fun mongoDBClient(data: NoteInterface) {
     notesCollections.insertOne(document).also {
         println("note added with id ${it.insertedId}")
     }
-
 
 }

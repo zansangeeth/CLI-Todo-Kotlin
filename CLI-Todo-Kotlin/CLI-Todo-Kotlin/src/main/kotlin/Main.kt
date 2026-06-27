@@ -1,6 +1,6 @@
 package com.sangeeth
 
-fun main() {
+suspend fun main() {
 
     cliInit()
 

@@ -8,7 +8,7 @@ val notesDBInstance = NotesDB()
 
 
 //val createNote: NoteInterface
-fun addNewNote() {
+suspend fun addNewNote() {
     print("please enter new note : ")
     scanner = readln()
     val noteId = UUID.randomUUID().toString()

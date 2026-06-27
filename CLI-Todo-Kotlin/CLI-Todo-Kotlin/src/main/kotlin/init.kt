@@ -2,7 +2,7 @@ package com.sangeeth
 
 import kotlin.system.exitProcess
 var scanner: Any? = null
-fun cliInit(){
+suspend fun cliInit(){
 
     println("***************CLI-Todo-App*****************")
 
