@@ -20,14 +20,15 @@ suspend fun vewNotes() {
 
 
 
-    val idMaxWidth = 30
-    val noteWidth = 40
-    val dateMaxWidth = 40
+    val idMaxWidth = maxOf(4, db.maxOfOrNull { (it.getString("id") ?: "").length }?.coerceIn(20, 50) ?: 20)
+    val noteWidth = maxOf(20, db.maxOfOrNull { (it.getString("note") ?: "").length }?.coerceIn(20, 50) ?: 20)
+    val dateMaxWidth = maxOf(12, db.maxOfOrNull { (it.getString("time") ?: "").length }?.coerceIn(20, 50) ?: 12)
 //
+
     println("| %-${idMaxWidth}s | %-${noteWidth}s | %-${dateMaxWidth}s |".format("ID", "Note", "Time"))
 //
         db.forEachIndexed { index, document ->
-            println("| ${(index+1)} | ${document.getString("note")} | ${document.getString("time")} |")
+            println("| ${document.getString("id").take(idMaxWidth).padEnd(idMaxWidth)} | ${document.getString("note").take(noteWidth).padEnd(noteWidth)} | ${document.getString("time").take(dateMaxWidth).padEnd(dateMaxWidth)} |")
         }
 
 
