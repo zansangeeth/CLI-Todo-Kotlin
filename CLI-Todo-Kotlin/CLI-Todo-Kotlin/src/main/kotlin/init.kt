@@ -10,14 +10,17 @@ suspend fun cliInit(){
     println("press 1 or 2 only")
     println("1 - New Note")
     println("2 - View Notes")
-    println("3 - Exit")
+    println("3 - Modify Notes")
+    println("4 - Exit")
+
     try {
         scanner = readln().toInt()
         do {
             when (scanner) {
                 1 -> addNewNote()
-                2 -> vewNotes()
-                3 -> exitProcess(0)
+                2 -> viewNotes()
+                3 -> modifyNotes()
+                4 -> exitProcess(0)
                 else -> println("you should be select either 1 or 2\n ${cliInit()}")
             }
         } while (scanner == 1 or(2))

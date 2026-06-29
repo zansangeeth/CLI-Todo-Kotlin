@@ -1,6 +1,6 @@
 package com.sangeeth
 
-import kotlinx.coroutines.runBlocking
+import org.bson.Document
 import java.time.LocalDate
 import java.util.UUID
 
@@ -18,8 +18,14 @@ suspend fun addNewNote() {
         getTime = LocalDate.now().toString(),
     )
     notesDBInstance.notesDB.getOrPut(noteId) { mutableListOf() }.add(newNote)
-    runBlocking {
-        mongoDBClient(newNote)
+    run {
+        val document = Document()
+            .append("id", newNote.getNoteId)
+            .append("note", newNote.getNote)
+            .append("time", newNote.getTime)
+        mongoDBClient().insertOne(document).also {
+            println("note added with id ${it.insertedId}")
+        }
     }
 
     println("you entered : ${newNote.getNote + newNote.getTime}")

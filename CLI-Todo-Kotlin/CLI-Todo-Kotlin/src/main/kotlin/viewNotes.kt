@@ -6,7 +6,7 @@ import org.bson.Document
 import kotlin.io.println
 
 
-suspend fun vewNotes() {
+suspend fun viewNotes() {
 
 //    val db = notesDBInstance.notesDB
     val connectionUri =
