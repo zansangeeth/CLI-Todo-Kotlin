@@ -2,6 +2,9 @@
 
 A command-line Todo application built with Kotlin using Object-Oriented Programming (OOP) concepts.
 
+<img width="4120" height="1813" alt="image" src="https://github.com/user-attachments/assets/f061b020-7bde-499e-b56e-e851e1de53ee" />
+
+
 ## Features
 
 - Create and manage todo items.
